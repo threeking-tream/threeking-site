@@ -1,10 +1,18 @@
+// 整个应用的根组件
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link> |
+    <router-link to="/">Home1</router-link> |
     <router-link to="/about">About</router-link>
   </div>
   <router-view />
 </template>
+
+<script>
+  export default{
+      name: 'app'
+  }
+</script>
+
 
 <style lang="scss">
 #app {
