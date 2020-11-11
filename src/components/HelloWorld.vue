@@ -1,13 +1,13 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <p>{{ content}}</p>
+    <!-- <p>{{ content}}</p> -->
   </div>
   
-  <div>
+  <!-- <div>
     <button id='btnTest' @click="btnClick()">点一下</button>
     <div>{{userinfo}}</div>
-  </div>
+  </div> -->
 </template>
 
 <script>
