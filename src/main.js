@@ -6,7 +6,6 @@ import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
 
 
-console.log(store.state.userinfo);
 
 createApp(App)
   .use(store)  
