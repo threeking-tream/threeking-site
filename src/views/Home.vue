@@ -77,9 +77,9 @@ export default {
     let userStorage = localStorage.getItem("user");
     userStorage = JSON.parse(userStorage);
       
-    this.user.name = userStorage.name;       
+    this.user.name = userStorage.nikeName;       
     this.user.sex = userStorage.sex;
-    this.msg="Welcome " + userStorage.name + (userStorage.sex?'先生':'女士')
+    this.msg="Welcome " + userStorage.nikeName + (userStorage.sex?'先生':'女士')
     
   },
   methods:{

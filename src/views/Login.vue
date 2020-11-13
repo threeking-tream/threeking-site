@@ -1,73 +1,31 @@
 <template>
-    <div class="body-bg">        
-    <e-card class="box-card">
-        <!-- <div v-slot:"header" class="clearfix">
-            <span>卡片名称</span>   
-        </div> -->
-        <el-row type="flex" justify="center">
-        <el-col :span="6">
-            <el-form label-position="left"  label-width="80px" :model="formLogin" :rules="rules" ref="formLogin">
-            <el-form-item label="手机号" prop="phone">
-                <el-input v-model="formLogin.phone"></el-input>
-            </el-form-item>
-            <el-form-item label="验证码" prop="verify">
-                <el-input v-model="formLogin.verify"></el-input>
-            </el-form-item>
-            <el-form-item>                 
-                <el-button  type="danger"  @click="login()" class="margin-top-25 block">登录</el-button>
-                
-            </el-form-item>
-            </el-form>
-        </el-col>
-        </el-row>
-    </e-card>
-    </div>
+   <div class="signupPage">
+    <content>
+    <LoginUpCore />    
+    </content>   
+
+    <footer class="signup-footer">
+      <div class="ZhihuLinks">
+        <a target="_blank" rel="noopener noreferrer" href="#">知乎专栏</a>
+        <a target="_blank" rel="noopener noreferrer" href="#">圆桌</a>
+        <a target="_blank" rel="noopener noreferrer" href="#">发现</a>
+        <a target="_blank" rel="noopener noreferrer" href="#">移动应用</a>
+        <a target="_blank" rel="noopener noreferrer" href="#">联系我们</a>
+        <a target="_blank" rel="noopener noreferrer" href="#">来知乎工作</a>
+        <a target="_blank" rel="noopener noreferrer" href="#">注册机构号</a>
+      </div>
+    </footer>
+  </div>
 </template>
 
 <script>
-// 将actions中的方法直接转为组件中的方法
-import { mapActions } from "vuex";
+import LoginUpCore from "@/components/LoginUpCore.vue"
 
 export default {
   name: "Login",
-  data(){
-      return {
-          formLogin:{
-              phone: '',
-              verify: ''
-          }
-      }
-  },
-  methods: {
-    ...mapActions(["userLogin"]),
-    login() {
-      //真实环境需要从回来请求回来数据，且也不能只存储姓名性别，主要是要后台标识的key
-      let data = {
-        name: "张三",
-        sex: 1
-      };
-      console.log("aaaaa:" + data.name);
-      this.userLogin(data);
-      this.$router.push("/");
-    }
+  components: {
+      LoginUpCore
   }
 };
 </script>
 
-<style>
-
-.body-bg
-{  
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: url("../assets/login_bg.jpg") top center no-repeat;
-    background-attachment:fixed;
-    background-size: cover;
-    -moz-background-size:cover;
-    -webkit-background-size:cover; 
-    position: absolute;
-    z-index: -1;   
-}
-</style>
