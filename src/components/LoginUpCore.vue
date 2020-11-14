@@ -32,12 +32,13 @@
 <script>
 import { mapActions } from "vuex";
 import axios from "axios";
+import qs from 'qs';
 
 export default {
     name:'LoginUpCore',
     data(){
         return {
-            phone: '',
+            phone: '13266666666',
             verify: ''
         }
     },
@@ -73,14 +74,16 @@ export default {
                 return ;    
             }
             let data =  {phoneNo: this.phone}
+            //const url = "/api/user/login/sendVerify";
+            // const options = {
+            //     method: 'POST',
+            //     headers: { 'content-type': 'application/x-www-form-urlencoded' },
+            //     data: JSON.stringify(data),
+            //     url,
+            //     };
             axios.post("/api/user/login/sendVerify",
-                {                
-                    headers: {'content-type':'application/x-www-form-urlencoded'}
-                },
-                {
-                    params: data
-                }
-            ).then(reg=>{
+                    qs.stringify(data)                    
+                    ).then(reg=>{
                 var res = reg.data;
                 console.log(res)
                 if(res.code === "0"){
