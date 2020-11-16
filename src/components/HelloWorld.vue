@@ -25,7 +25,7 @@ export default {
   },
   mounted(){    
      // js代码中使用环境变量    
-    axios.get("/api/hello").then(reg=>{   
+    axios.get("/api/user/hello").then(reg=>{   
             this.content = reg.data  
           }).catch(function(error){
             console.log(error);

@@ -31,7 +31,8 @@
 
 <script>
 import { mapActions } from "vuex";
-import axios from "axios";
+// import axios from 'axios';
+// import axios from '../utils/request.js';
 import qs from 'qs';
 
 export default {
@@ -50,8 +51,8 @@ export default {
                 phone: this.phone,
                 verify: this.verify
             };  
-            axios.post("/api/user/login/login",data).then(reg=>{
-                var res = reg.data;
+            this.$http.post("/api/user/login/login", data).then(reg=>{
+               var res = reg.data;
                 console.log(res)
                 if(res.code === "0"){
                     let user = res.content
@@ -63,7 +64,7 @@ export default {
             }).catch(e=>{
                 this.$message("出错了");
                 console.log(e)
-            })   
+            })           
         },
         getVerify(){
             if(!/^1[34578]\d{9}$/.test(this.phone)){
@@ -73,15 +74,8 @@ export default {
                 });
                 return ;    
             }
-            let data =  {phoneNo: this.phone}
-            //const url = "/api/user/login/sendVerify";
-            // const options = {
-            //     method: 'POST',
-            //     headers: { 'content-type': 'application/x-www-form-urlencoded' },
-            //     data: JSON.stringify(data),
-            //     url,
-            //     };
-            axios.post("/api/user/login/sendVerify",
+            let data =  {phoneNo: this.phone}      
+            this.$http.post("/api/user/login/sendVerify",
                     qs.stringify(data)                    
                     ).then(reg=>{
                 var res = reg.data;

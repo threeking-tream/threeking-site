@@ -1,13 +1,25 @@
-import { createApp } from "vue";
+import {createApp} from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
+import axios from "../src/utils/request"
 
-createApp(App)
-  .use(store)  
+
+const app = createApp(App);
+app.config.globalProperties.$http =axios;
+app.use(store)
   .use(router)
-  .use(ElementPlus)  
+  .use(ElementPlus)
   .mount("#app");
+
+// createApp(App)
+//   .use(store)  
+//   .use(router)
+//   .use(ElementPlus)   
+//   .mount("#app");
+
+
+
 
