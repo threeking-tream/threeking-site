@@ -4,10 +4,14 @@
     <!-- <p>{{ content}}</p> -->
   </div>
   
-  <!-- <div>
-    <button id='btnTest' @click="btnClick()">点一下</button>
-    <div>{{userinfo}}</div>
-  </div> -->
+  <div>
+    <button id='btnTest' @click="btnClick()">点一下Get请求</button>
+    <div>{{content}}</div>
+  </div>
+  <div>
+    <button id='btnTest' @click="btnPostClick">点一下post请求</button>
+    <div>{{content}}</div>
+  </div>
 </template>
 
 <script>
@@ -33,11 +37,19 @@ export default {
   },
   methods:{
     btnClick (){
-      axios.get("/api/jdbc").then(reg=>{   
+      axios.get("/api/user/jdbc").then(reg=>{   
             this.userinfo = reg.data  
           }).catch(function(error){
             console.log(error);
           })
+    },
+    btnPostClick(){
+      this.$http.post('/api/user/ccp').then(reg=>{
+        console.log(reg);
+        this.content = reg.data 
+      }).catch(err=>{
+        console.log(err)
+      })
     }
   }
 };
