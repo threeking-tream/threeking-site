@@ -5,14 +5,25 @@ import Home from "../views/Home.vue";
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    redirect: "/dashboard"
   },
   {
-    path: "/about",
-    name: "About", 
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    path: "/",
+    name: "Home",
+    component: Home,
+    children:[
+      {       
+        path: "/dashboard",
+        name: "Dashboard",
+        component: ()=> import("../views/Dashboard.vue")
+      },
+      {
+        path: "/about",
+        name: "About", 
+        component: () =>
+          import(/* webpackChunkName: "about" */ "../views/About.vue")
+      },
+    ]
   },
   {
     path: "/login",
