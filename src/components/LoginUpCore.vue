@@ -47,24 +47,31 @@ export default {
         ...mapActions(["userLogin"]),
         login() {
             //真实环境需要从回来请求回来数据，且也不能只存储姓名性别，主要是要后台标识的key
-            let data = {
-                phone: this.phone,
-                verify: this.verify
-            };  
-            this.$http.post("/api/user/login/login", data).then(reg=>{
-               var res = reg.data;
-                console.log(res)
-                if(res.code === "0"){
-                    let user = res.content
-                    this.userLogin(user);
-                    this.$router.push("/");                  
-                }else{
-                    this.$message(res.msg);    
-                }         
-            }).catch(e=>{
-                this.$message("出错了");
-                console.log(e)
-            })           
+            let user ={
+                name: '詹姆斯',
+                sex:1,
+                token: 'afdsfdsfj234oij348ncxnvo'
+            }
+            this.userLogin(user);
+            this.$router.push("/");
+            // let data = {
+            //     phone: this.phone,
+            //     verify: this.verify
+            // };  
+            // this.$http.post("/api/user/login/login", data).then(reg=>{
+            //    var res = reg.data;
+            //     console.log(res)
+            //     if(res.code === "0"){
+            //         let user = res.content
+            //         this.userLogin(user);
+            //         this.$router.push("/");                  
+            //     }else{
+            //         this.$message(res.msg);    
+            //     }         
+            // }).catch(e=>{
+            //     this.$message("出错了");
+            //     console.log(e)
+            // })           
         },
         getVerify(){
             if(!/^1[34578]\d{9}$/.test(this.phone)){

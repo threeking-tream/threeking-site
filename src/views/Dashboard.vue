@@ -10,6 +10,10 @@ import TKButton from "../components/TKButton"
 export default{    
     components:{
         TKButton
+    },
+    mounted(){
+        console.log("aaaa");
+        console.log(location.hash);
     }
 }
 </script>
