@@ -1,13 +1,32 @@
 <template>
     <div class="dashboard-wrap">               
-    <TKButton></TKButton>
-    <TKButton></TKButton>
+        <TKButton></TKButton>
+        <TKButton></TKButton>
+
+        <div>{{msg}}</div>
+        <div v-for="(item, index) in milut" :key="index">{{ item.name}}</div>
     </div>
 </template>
 
 <script>
 import TKButton from "../components/TKButton"
-export default{    
+import {ref, reactive} from "vue"
+export default{  
+    name: 'Dashboard',
+    setup(){
+
+        const msg = ref("hello");
+
+        const milut = reactive([
+            {name:"张三",age: 20},
+            {name:"李四",age: 21}
+        ]);
+
+        return {
+            msg,
+            milut
+        }
+    } ,
     components:{
         TKButton
     },

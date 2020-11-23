@@ -1,70 +1,68 @@
 <template>
   <div class="sidebar-wrap">
-    <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-      <el-radio-button :label="false">展开</el-radio-button>
-      <el-radio-button :label="true">收起</el-radio-button>
-    </el-radio-group>
     <el-menu
-      default-active="1-4-1"
+      default-active="1-1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
       :collapse="isCollapse"
-      background-color=transparent text-color="#fff" active-text-color="#fff"
+      background-color="transparent"
+      text-color="#fff"
+      active-text-color="#fff"
+      router=true
     >
-      <el-submenu index="1">
-        <template #title>
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-        <el-menu-item-group>
-          <template #title>分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template #title>选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
+      <template v-for="(item, index) in routers">
+        <el-submenu
+          v-if="!item.meta.hidden"
+          :key="item.id"
+          :index="index"
+        >
+          <!-- 一级菜单 -->
+          <template #title>
+            <i class="el-icon-location"></i>
+            <span>{{ item.name }}</span>
+          </template>
+          <!--子菜单-->
+          <el-menu-item
+            v-for="subItem in item.children"
+            :key="subItem.id"
+            index="/newslist"
+          >
+            {{ subItem.name }}
+          </el-menu-item>
         </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <template #title>导航二</template>
-      </el-menu-item>
-      <el-menu-item index="3" disabled>
-        <i class="el-icon-document"></i>
-        <template #title>导航三</template>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <template #title>导航四</template>
-      </el-menu-item>
+      </template>
     </el-menu>
   </div>
 </template>
 
 <script>
+import { ref ,reactive } from "vue";
+import {  useRouter } from "vue-router";
 export default {
-  data() {
+  name: "sidebar",
+  setup() {
+    let isCollapse = ref(false);
+  
+    // 获取路由
+    const routers = reactive(useRouter().options.routes);
+
+
+    const handleOpen = (key, keyPath) => {
+      console.log(key, keyPath);
+    };
+
+    const handleClose = (key, keyPath) => {
+      console.log(key, keyPath);
+    };
+
     return {
-      isCollapse: false,
+      isCollapse,
+      handleOpen,
+      routers,
+      handleClose,
     };
   },
-  methods: {
-    handleOpen(key, keyPath) {
-      console.log(key, keyPath);
-    },
-    handleClose(key, keyPath) {
-      console.log(key, keyPath);
-    },
-  },
-  setup(props,{root}){
-    console.log(this)
-    console.log(root)
-  }
 };
 </script>
 
