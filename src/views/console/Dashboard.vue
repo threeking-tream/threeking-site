@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import TKButton from "../components/TKButton"
+import TKButton from "@/components/TKButton"
 import {ref, reactive} from "vue"
 export default{  
     name: 'Dashboard',

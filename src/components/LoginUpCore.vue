@@ -31,9 +31,8 @@
 
 <script>
 import { mapActions } from "vuex";
-// import axios from 'axios';
-// import axios from '../utils/request.js';
 import qs from 'qs';
+// import {login} from "@/api/login"
 
 export default {
     name:'LoginUpCore',
@@ -52,8 +51,10 @@ export default {
                 sex:1,
                 token: 'afdsfdsfj234oij348ncxnvo'
             }
+            
             this.userLogin(user);
             this.$router.push("/");
+            //login(user);
             // let data = {
             //     phone: this.phone,
             //     verify: this.verify

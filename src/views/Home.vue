@@ -8,10 +8,10 @@
 </template>,       
 
 <script>
-import Header from "../components/layout/Header"
-import Main from "../components/layout/Main"
-import Sidebar from "../components/layout/Sidebar"
-import Tags from "../components/layout/Tags"
+import Header from "./layout/Header"
+import Main from "./layout/Main"
+import Sidebar from "./layout/Sidebar"
+import Tags from "./layout/Tags"
 
 export default{
    components: {

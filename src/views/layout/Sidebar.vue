@@ -1,6 +1,25 @@
 <template>
   <div class="sidebar-wrap">
-    <el-menu
+  
+<el-menu default-active="/about" class="el-menu-vertical-demo"  background-color="transparent"  text-color="#fff"
+      active-text-color="#fff" @open="handleOpen" @close="handleClose" :collapse="isCollapse"
+      router>
+  <el-submenu index="1">
+    <template #title>
+      <i class="el-icon-location"></i>
+      <span>控制台</span>
+    </template>
+    <router-view>
+      <el-menu-item index="/dashboard">首页
+    </el-menu-item>
+      </router-view>
+    <el-menu-item index="/about">关于我们</el-menu-item>
+    
+  </el-submenu> 
+</el-menu>
+
+
+    <!-- <el-menu
       default-active="1-1"
       class="el-menu-vertical-demo"
       @open="handleOpen"
@@ -9,36 +28,36 @@
       background-color="transparent"
       text-color="#fff"
       active-text-color="#fff"
-      router=true
+      router
     >
       <template v-for="(item, index) in routers">
         <el-submenu
           v-if="!item.meta.hidden"
           :key="item.id"
           :index="index"
-        >
+        > -->
           <!-- 一级菜单 -->
-          <template #title>
+          <!-- <template #title>
             <i class="el-icon-location"></i>
-            <span>{{ item.name }}</span>
-          </template>
+            <span>{{ item.title }}</span>
+          </template>-->
           <!--子菜单-->
-          <el-menu-item
+          <!-- <el-menu-item
             v-for="subItem in item.children"
             :key="subItem.id"
-            index="/newslist"
+            :index="subItem.path"
           >
-            {{ subItem.name }}
+            {{ subItem.title }}
           </el-menu-item>
         </el-submenu>
       </template>
-    </el-menu>
+    </el-menu> --> 
   </div>
 </template>
 
 <script>
 import { ref ,reactive } from "vue";
-import {  useRouter } from "vue-router";
+import { useRoute,  useRouter } from "vue-router";
 export default {
   name: "sidebar",
   setup() {
@@ -46,7 +65,8 @@ export default {
   
     // 获取路由
     const routers = reactive(useRouter().options.routes);
-
+    console.log(routers)
+    console.log(useRoute())
 
     const handleOpen = (key, keyPath) => {
       console.log(key, keyPath);
