@@ -16,7 +16,7 @@ export default {
 .main-wrap {
     position:fixed;
     left: $SidebarWidth;
-    top: 100px;
+    top: $HearderHigth+55px;
     right: 0;
     bottom: 0;
     border: 30px solid #f0f0f0;

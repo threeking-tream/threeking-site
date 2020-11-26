@@ -19,8 +19,10 @@ module.exports = {
             "^/api": "/"
           }
         }
-      }
+      },
+      historyApiFallback: true
     },
+    lintOnSave: true,
     css: {
       loaderOptions: {
           sass: {

@@ -1,18 +1,16 @@
 <template>
   <div class="sidebar-wrap">
   
-<el-menu default-active="/about" class="el-menu-vertical-demo"  background-color="transparent"  text-color="#fff"
+<el-menu default-active="/console" class="el-menu-vertical-demo"  background-color="transparent"  text-color="#fff"
       active-text-color="#fff" @open="handleOpen" @close="handleClose" :collapse="isCollapse"
-      router>
-  <el-submenu index="1">
+      >
+  <el-submenu index="/console">
     <template #title>
       <i class="el-icon-location"></i>
       <span>控制台</span>
-    </template>
-    <router-view>
-      <el-menu-item index="/dashboard">首页
-    </el-menu-item>
-      </router-view>
+    </template>    
+    <el-menu-item index="/dashboard">首页
+    </el-menu-item>      
     <el-menu-item index="/about">关于我们</el-menu-item>
     
   </el-submenu> 

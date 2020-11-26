@@ -1,8 +1,9 @@
 <template>
     <div class="dashboard-wrap">               
+      
+        <div>dashboard页面</div>
         <TKButton></TKButton>
         <TKButton></TKButton>
-
         <div>{{msg}}</div>
         <div v-for="(item, index) in milut" :key="index">{{ item.name}}</div>
     </div>

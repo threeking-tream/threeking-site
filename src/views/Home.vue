@@ -1,6 +1,6 @@
 <template>
   <div class="home-wrap">
-     <Header></Header>
+      <Header></Header>
       <Sidebar></Sidebar>
       <Tags></Tags>
       <Main></Main> 
@@ -14,12 +14,13 @@ import Sidebar from "./layout/Sidebar"
 import Tags from "./layout/Tags"
 
 export default{
-   components: {
-        Header,
-        Main,
-        Sidebar,
-        Tags
-    }
+  name:"home",
+  components: {
+      Header,
+      Main,
+      Sidebar,
+      Tags
+  }
 }
 </script>
 

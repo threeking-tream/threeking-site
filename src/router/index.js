@@ -1,4 +1,6 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHashHistory  } from "vue-router";
+
+//createWebHashHistory createWebHistory
 
 const home = () => import("../views/Home.vue")
 const login = () => import(/* webpackChunkName: "login" */ "../views/login/Index.vue")
@@ -7,34 +9,40 @@ const about = () => import(/* webpackChunkName: "about" */ "../views/console/Abo
 
 const routes = [
     {
-    path: "/",
-    //redirect: "/dashboard",
-    title: "首页",
-    name: "控制台",
-    hidden: true,  
-    component: home
+      path: "/",
+      redirect: "/dashboard"     
+    }, 
+    {
+      path: "/console",
+      component: home,
+      name: "Console",
+      title: "控制台",
+      hidden: true,  
+      children:[
+        {
+          path: "/dashboard",
+          name: "Dashboard", 
+          title: "首页",
+          hidden: false,  
+          component: dashboard
+        },
+        {
+          path: "/about",
+          name: "About", 
+          title: "关于我们",
+          hidden: false,  
+          component: about
+        },
+      ]
+    }, 
+    {
+      path: "/login",
+      name: "Login",
+      title: "登录",
+      hidden: true, 
+      component: login
   },
-  {
-    path: "/login",
-    name: "Login",
-    title: "登录",
-    hidden: true, 
-    component: login
-  },
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    title: "控制台",
-    hidden: true,  
-    component: dashboard
-  },
-  {
-  path: "/about",
-  name: "About", 
-  title: "关于我们",
-  hidden: false,  
-  component: about
-},
+ 
 
 ];
 
@@ -148,9 +156,11 @@ const routes = [
 //   },
 
 // ];
+const routerHistory = createWebHashHistory()
+
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: routerHistory,
   routes
 });
 
@@ -160,10 +170,10 @@ router.beforeEach((to, from, next) => {
   //debugger
   if (to.name.toLocaleLowerCase() !== 'login') {
     if (session) {
-      console.log("session存在:" + session)
+      //console.log("session存在:" + session)
       next();
     } else {
-      console.log("session不存在" + session)
+      //console.log("session不存在" + session)
       next({
         path: '/login',
       })
