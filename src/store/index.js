@@ -5,7 +5,11 @@ var state = {
     userinfo:{
       name: '',
       sex: null
-    }
+    },
+    tagsList:[
+    {path:'/dashboard', title:"首页"},
+    {path:'/about', title:"关于我们"}  
+    ]
 }
 
 export default createStore({

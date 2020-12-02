@@ -12,29 +12,34 @@
 </template>
 
 <script>
-import {reactive } from "vue";
-import { useRoute, useRouter } from "vue-router";
+import { reactive} from 'vue'
+import { useRoute,useRouter } from "vue-router";
+import { useStore } from 'vuex';
 export default {
     name: "tag",
-    setup(pops, ctx){
+    setup(pops, ctx){       
 
-        let tagsList = reactive(useRouter().options.routes)
+        // 获取当前路由
+        const route = useRoute()
+        // 获取路由实例
+        const router = useRouter()
 
-
-        console.log(tagsList)
+        let tagsList = reactive(useStore().state.tagsList)
+        console.log(route)
+        console.log(ctx)
         const isActive =(path) =>{            
-            return path === useRoute().fullPath;
+            return path === route.fullPath;
         }
 
         // 关闭单个标签
          const closeTags =(index) => {
-                const delItem = this.tagsList.splice(index, 1)[0];
-                const item = this.tagsList[index] ? this.tagsList[index] : this.tagsList[index - 1];
+                const delItem = tagsList.splice(index, 1)[0];
+                const item = tagsList[index] ? tagsList[index] : tagsList[index - 1];                
                 if (item) {
                     //delItem.path === this.$route.fullPath && this.$router.push(item.path);
-                    delItem.path === useRoute().fullPath && useRoute().push(item.path);
+                    delItem.path === route.fullPath && route.push(item.path);
                 }else{
-                    this.$router.push('/');
+                    router.push('/');
                 }
             }
 

@@ -12,6 +12,7 @@ const actions = {
         localStorage.removeItem('user')
         localStorage.removeItem('x-auth-token')
     }
+  
 }
 
 export default actions

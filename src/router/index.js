@@ -10,6 +10,7 @@ const about = () => import(/* webpackChunkName: "about" */ "../views/console/Abo
 const routes = [
     {
       path: "/",
+      hidden: true,
       redirect: "/dashboard"     
     }, 
     {
@@ -17,7 +18,7 @@ const routes = [
       component: home,
       name: "Console",
       title: "控制台",
-      hidden: true,  
+      hidden: false,  
       children:[
         {
           path: "/dashboard",
