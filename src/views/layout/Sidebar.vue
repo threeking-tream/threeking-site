@@ -1,6 +1,39 @@
 <template>
   <div class="sidebar-wrap">
-    <ul class="nav-ul  el-submenu el-menu-vertical-demo">       
+     <el-menu
+      default-active="1-1"
+      class="el-menu-vertical-demo"
+      @open="handleOpen"
+      @close="handleClose"
+      :collapse="isCollapse"
+      background-color="transparent"
+      text-color="#fff"
+      active-text-color="#fff"
+      router
+    >
+      <template v-for="(item, index) in routers">
+        <el-submenu
+          v-if="!item.hidden"
+          :key="item.id"
+          :index="index"
+        > 
+          <!-- 一级菜单 -->
+          <template #title>
+            <i class="el-icon-location"></i>
+            <span>{{ item.title }}</span>
+          </template>
+          <!--子菜单-->
+           <el-menu-item
+            v-for="subItem in item.children"
+            :key="subItem.id"
+            :index="subItem.path"
+          >
+            {{ subItem.title }}
+          </el-menu-item>
+        </el-submenu>
+      </template>
+    </el-menu>
+    <!-- <ul class="nav-ul  el-submenu el-menu-vertical-demo">       
         <li class="nav-li el-submenu nav-li-title">
           <div>            
               <i class="el-icon-location"></i>
@@ -15,7 +48,7 @@
                 </router-link> 
             </ul>                  
         </li>       
-    </ul>  
+    </ul>   -->
   </div>
 </template>
 
