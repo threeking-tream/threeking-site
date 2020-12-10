@@ -1,7 +1,7 @@
 <template>
   <div class="sidebar-wrap">
      <el-menu
-      default-active="1-1"
+      default-active="/dashboard"
       class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
@@ -32,23 +32,7 @@
           </el-menu-item>
         </el-submenu>
       </template>
-    </el-menu>
-    <!-- <ul class="nav-ul  el-submenu el-menu-vertical-demo">       
-        <li class="nav-li el-submenu nav-li-title">
-          <div>            
-              <i class="el-icon-location"></i>
-              <span class="nav-li-title el-submenu__title">控制台</span>           
-          </div>
-            <ul class=" el-menu--inline">              
-                <router-link v-on:click="clickMenu"  tag="li" to="/dashboard" class="full-left el-menu-item nav-li-title">
-                首页
-                </router-link>             
-                <router-link  tag="li" to="/about" class="full-left el-menu-item  nav-li-title">
-                  关于我们
-                </router-link> 
-            </ul>                  
-        </li>       
-    </ul>   -->
+    </el-menu> 
   </div>
 </template>
 
