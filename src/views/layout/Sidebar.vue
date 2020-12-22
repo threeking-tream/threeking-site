@@ -13,13 +13,13 @@
     >
       <template v-for="(item, index) in routers">
         <el-submenu
-          v-if="!item.hidden"
+          v-if="!item.meta.hidden"
           :key="item.id"
-          :index="index"
+          :index="index + ''"
         > 
           <!-- 一级菜单 -->
           <template #title>
-            <i class="el-icon-location"></i>
+            <i :class="item.meta.icon"></i>
             <span>{{ item.title }}</span>
           </template>
           <!--子菜单-->
@@ -33,7 +33,9 @@
         </el-submenu>
       </template>
     </el-menu> 
+    <svg-icon></svg-icon>
   </div>
+  
 </template>
 
 <script>
@@ -43,12 +45,13 @@ import { useStore } from 'vuex';
 
 export default {
   data(){
-     const store = useStore()
-
+      const store = useStore()
       console.log(store.state.userinfo.name)
+      return store;
   },
   name: "sidebar",
   setup() {
+   
     let isCollapse = ref(false);    
     // 获取路由
     const routers = reactive(useRouter().options.routes);  

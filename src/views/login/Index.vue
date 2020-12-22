@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import LoginUpCore from "@/components/LoginUpCore.vue"
+import LoginUpCore from "../../components/LoginUpCore.vue"
 
 export default {
   name: "Login",

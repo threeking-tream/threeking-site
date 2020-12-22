@@ -4,14 +4,19 @@ import router from "./router";
 import store from "./store";
 import ElementPlus from 'element-plus'
 import 'element-plus/lib/theme-chalk/index.css'
-//import axios from "../src/utils/request"
+
+import SvgIcon from "./icons/index"
 
 const app = createApp(App);
-// app.config.globalProperties.$http =axios;
+  
 app.use(store)
   .use(router)
-  .use(ElementPlus)  
+  .component('svg-icon',SvgIcon)
+  .use(ElementPlus)   
   .mount("#app");
+
+
+
 
 // createApp(App)
 //   .use(store)  

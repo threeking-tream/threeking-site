@@ -10,39 +10,86 @@ const about = () => import(/* webpackChunkName: "about" */ "../views/console/Abo
 const routes = [
     {
       path: "/",
-      hidden: true,
+      meta:{
+        hidden: true
+      },
       redirect: "/dashboard"     
     }, 
+    {
+      path: "/login",
+      name: "Login",
+      title: "登录",
+      meta:{
+        hidden: true
+      },
+      component: login 
+    },
     {
       path: "/console",
       component: home,
       name: "Console",
       title: "控制台",
-      hidden: false,  
+      meta:{
+        hidden: false,
+        icon: 'el-icon-position'
+      },      
       children:[
         {
           path: "/dashboard",
           name: "Dashboard", 
-          title: "首页",
-          hidden: false,  
+          title: "首页",         
+          meta: {
+            hidden: false,
+            icon: 'el-icon-position'
+          },
           component: dashboard
         },
         {
           path: "/about",
           name: "About", 
           title: "关于我们",
-          hidden: false,  
+          meta:{
+            hidden: false,
+            icon: 'el-icon-position'
+          }, 
           component: about
         },
       ]
     }, 
     {
-      path: "/login",
-      name: "Login",
-      title: "登录",
-      hidden: true, 
-      component: login
-  },
+      path: "/usercenter",
+      component: home,
+      name: "UserCenter",
+      title: "用户中心",
+      meta:{
+        hidden: false,
+        icon: 'el-icon-position'
+      },      
+      children:[
+        {
+          path: "/userlist",
+          name: "UserList", 
+          title: "用户列表",         
+          meta: {
+            hidden: false,
+            icon: 'el-icon-position'
+          },
+          component: dashboard
+        },
+        {
+          path: "/userabout",
+          name: "UserAbout", 
+          title: "用户关怀",
+          meta:{
+            hidden: false,
+            icon: 'el-icon-position'
+          }, 
+          component: about
+        },
+      ]
+    }, 
+    
+ 
  
 
 ];
